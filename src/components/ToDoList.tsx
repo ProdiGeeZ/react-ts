@@ -6,9 +6,11 @@ interface ToDoListProps {
 
 const ToDoList: React.FC<ToDoListProps> = ({ items }) => {
     return (
-        <ul>
-            {items.map(todo => <li key={todo.id}>{todo.text}</li>)}
-        </ul>
+        <div>
+            <ul id='task'>
+                {items.map(todo => <li key={todo.id}>{todo.text}<input type="checkbox" key={todo.id}/></li>)}
+            </ul>
+        </div>
     );
 }
 

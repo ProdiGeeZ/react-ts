@@ -1,12 +1,23 @@
+import { useState } from 'react';
 import './App.css';
+import NewTask from './components/NewTask';
 import ToDoList from './components/ToDoList';
 
 function App() {
-  const todos = [{ id: 't1', text: 'Finish this course.' }]
+  const [todos, setTodos] = useState([{ id: 't1', text: 'Finish this course.' }]);
+
+  const handleNewTask = (newTask: string) => {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: `${Math.random()}`, text: newTask }
+    ]);
+  };
 
   return (
     <div className="App">
-      <ToDoList items={todos}/>
+      <h1>To Do List!</h1>
+      <NewTask handleNewTask={handleNewTask} />
+      <ToDoList items={todos} />
     </div>
   );
 }
